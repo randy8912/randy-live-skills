@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Contact · Showcase Portfolio{% endblock %}
+{% block content %}
+<section class="space-y-6">
+    <h1 class="text-3xl font-bold tracking-tight">Contact</h1>
+    <p class="text-neutral-700 max-w-2xl">
+        Vragen, feedback of samenwerken? Stuur me gerust een bericht.
+    </p>
+
+    {# MVP: start eenvoudig met mailto en uitbreiden we later naar een Django-formulier #}
+    <div class="flex flex-wrap gap-3">
+        <a href="mailto:randy.s@live.nl" class="btn btn-primary">E-mail sturen</a>
+        <a href="https://linkedin.com/in/randy-saija-9569511a3" target="_blank" rel="noreferrer"
+            class="btn btn-ghost">LinkedIn</a>
+        <a href="https://github.com/randy8912" target="_blank" rel="noreferrer" class="btn btn-ghost">GitHub</a>
+    </div>
+
+    <hr class="my-6" />
+
+    <section class="space-y-3">
+        <h2 class="text-xl font-semibold">Wat je kunt verwachten</h2>
+        <ul class="list-disc pl-5 text-neutral-700">
+            <li>Korte doorlooptijd op vragen</li>
+            <li>Indien nodig: follow-up call of demo</li>
+        </ul>
+    </section>
+</section>
+{% endblock %}

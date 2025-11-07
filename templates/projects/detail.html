@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load textutils %}
+{% block title %}
+{{project.title}} · Showcase Portfolio{% endblock %} {% block head %}
+{% if project.intro %}
+<meta name="description" content="{{ project.intro|truncatechars:155 }}" />
+{% endif %}
+<link rel="canonical" href="{{ request.build_absolute_uri }}" />
+<meta property="og:title" content="{{ project.title }}" />
+{% if project.intro %}
+<meta property="og:description" content="{{ project.intro|truncatechars:160 }}" />{% endif %} {% if project.image %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ project.image.url }}" />{% endif %}
+{% endblock %} {% block content %}
+<nav class="mb-6 text-sm text-neutral-600">
+  <a class="underline" href="/projects/">← Terug naar projecten</a>
+</nav>
+
+<article class="space-y-6">
+  <header class="space-y-3">
+    <h1 class="text-3xl font-bold tracking-tight">{{ project.title }}</h1>
+
+    {% with techs=project.tech_stack|splitcsv %} {% if techs %}
+    <div class="flex flex-wrap gap-2">
+      {% for tech in techs|slice:":8" %}
+      <span class="inline-flex items-center rounded-full border px-3 py-1 text-xs text-neutral-700 bg-white">
+        {{ tech }}
+      </span>
+      {% endfor %} {% if techs|length > 8 %}
+      <span class="inline-flex items-center rounded-full border px-3 py-1 text-xs text-neutral-700 bg-white">
+        +{{ techs|length|add:"-8" }}
+      </span>
+      {% endif %}
+    </div>
+    {% endif %} {% endwith %}
+  </header>
+
+  {% if project.image %}
+  <img src="{{ project.image.url }}" alt="{{ project.title }}"
+    class="rounded-2xl border w-full max-h-[420px] object-cover" />
+  {% endif %}
+
+  <section class="prose max-w-none">{{ project.intro|linebreaks }}</section>
+
+  <div class="flex flex-wrap gap-3">
+    {% if project.github_url %}
+    <a href="{{ project.github_url }}" target="_blank" rel="noreferrer"
+      class="inline-flex items-center rounded-xl border px-3 py-2 text-sm hover:bg-neutral-50">GitHub</a>
+    {% endif %} {% if project.demo_url %}
+    <a href="{{ project.demo_url }}" target="_blank" rel="noreferrer"
+      class="inline-flex items-center rounded-xl border px-3 py-2 text-sm hover:bg-neutral-50">Live demo</a>
+    {% endif %}
+  </div>
+
+  <hr class="my-6" />
+
+  <div class="flex justify-between text-sm">
+    <div>
+      {% if older %} ←
+      <a class="underline" href="{{ older.get_absolute_url }}">{{ older.title }}</a>
+      {% endif %}
+    </div>
+    <div>
+      {% if newer %}
+      <a class="underline" href="{{ newer.get_absolute_url }}">{{ newer.title }}</a>
+      → {% endif %}
+    </div>
+  </div>
+
+  {% if related %}
+  <section class="space-y-3">
+    <h2 class="text-xl font-semibold">Gerelateerde projecten</h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {% for item in related %}
+      {% include "includes/_project_card.html" with project=item only %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</article>
+{% endblock %}

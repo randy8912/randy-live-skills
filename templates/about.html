@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% load static %} {% block title %}About · Showcase
+Portfolio{% endblock %} {% block content %}
+<section class="space-y-6">
+  <h1 class="reveal text-3xl font-bold tracking-tight">Over mij</h1>
+  <p class="reveal text-neutral-700 max-w-2xl">
+    Ik ben Randy Saija, een developer met focus op Python, Django, data en een
+    strakke front-end met Tailwind. Dit portfolio is mijn oefenveld én
+    visitekaartje.
+  </p>
+
+  <div class="reveal flex flex-wrap gap-3">
+    <a href="/projects/" class="btn btn-primary">Bekijk projecten</a>
+    <a href="https://github.com/randy8912" target="_blank" rel="noreferrer" class="btn btn-ghost">GitHub</a>
+    <a href="https://linkedin.com/in/randy-saija-9569511a3" target="_blank" rel="noreferrer"
+      class="btn btn-ghost">LinkedIn</a>
+    <!-- Werkt als /static/cv.pdf bestaat -->
+    <a href="{% static 'cv.pdf' %}" class="btn btn-ghost">CV downloaden</a>
+  </div>
+
+  <section class="space-y-3">
+    <h2 class="reveal text-xl font-semibold">Stack</h2>
+    <ul class="reveal flex flex-wrap gap-2">
+      <li class="badge">Python</li>
+      <li class="badge">Django</li>
+      <li class="badge">Tensorflow</li>
+      <li class="badge">Pandas</li>
+      <li class="badge">Numpy</li>
+      <li class="badge">JavaScript</li>
+      <li class="badge">HTML/CSS</li>
+      <li class="badge">React</li>
+      <li class="badge">Tailwind</li>
+      <li class="badge">PostgreSQL/SQLite</li>
+      <li class="badge">GitHub</li>
+    </ul>
+  </section>
+</section>
+{% endblock %}

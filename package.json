@@ -1,0 +1,25 @@
+{
+  "name": "randy-live-skills",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tw:init": "@tailwindcss/cli init",
+    "tw:build": "tailwindcss -i ./assets/input.css -o ./static/tw.css --watch",
+    "tw:watch": "npx tailwindcss -i ./assets/input.css -o ./static/tw.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.14",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.14"
+  },
+  "[html]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false
+  }
+}

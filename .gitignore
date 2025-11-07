@@ -1,0 +1,35 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.log
+
+# Django
+db.sqlite3
+*.sqlite3
+.env
+.env.*
+/staticfiles/
+/media/
+
+# Virtual env
+venv/
+.venv/
+env/
+ENV/
+
+# Node / Tailwind
+node_modules/
+package-lock.json
+
+# IDE / OS
+.DS_Store
+.vscode/
+.cursor/
+.idea/
+*.swp
+*.bak
+
+# Build cache
+__pycache__/

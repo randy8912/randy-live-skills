@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Home · Showcase Portfolio{% endblock%}
+{% block content %}
+<section class="space-y-6">
+  <!-- Hero sectie -->
+  <h1 class="reveal text-4xl sm:text-5xl font-extrabold tracking-tight">
+    Showcase Portfolio
+  </h1>
+
+  <p class="reveal mt-2 text-neutral-600 max-w-2xl">
+    Een selectie van mijn recente projecten in Python, Django, JavaScript en
+    data. Bekijk cases of neem contact op.
+  </p>
+
+  <div class="reveal mt-4 flex flex-wrap gap-3">
+    <a href="/projects/" class="btn btn-primary">Bekijk projecten</a>
+    <a href="/admin/" class="btn btn-ghost">Admin</a>
+  </div>
+
+  <p class="text-neutral-700">
+    Dit is je startpunt met Django + Tailwind v4. Pas
+    <code class="font-mono text-sm">templates/home.html</code> aan en laat
+    <code class="font-mono text-sm">npm run tw:build</code> draaien voor live
+    styling.
+  </p>
+
+  <!-- Setup-status kaarten -->
+  <div class="grid gap-4 sm:grid-cols-2">
+    <article class="reveal card card-body">
+      <h2 class="font-semibold mb-2">Setup status</h2>
+      <ul class="list-disc pl-5 text-sm text-neutral-700 space-y-1">
+        <li>Tailwind watcher actief</li>
+        <li><code class="font-mono text-xs">static/tw.css</code> gekoppeld</li>
+        <li>Basistemplate met blocks en meta</li>
+      </ul>
+    </article>
+
+    <article class="reveal card card-body">
+      <h2 class="font-semibold mb-2">Volgende stap</h2>
+      <p class="text-sm text-neutral-700">
+        Voeg componenten toe of breid
+        <code class="font-mono text-xs">tailwind.config.js</code> uit (thema,
+        kleuren, typography/forms plugin).
+      </p>
+    </article>
+  </div>
+
+  <!-- Projectenoverzicht -->
+  <section class="space-y-3">
+    <h2 class="reveal text-2xl font-semibold">Projecten</h2>
+
+    {% if projects %}
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {% for p in projects %}
+        {% include "includes/_project_card.html" with project=p only %}
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-neutral-600">
+      Nog geen projecten. Voeg er eentje toe via
+      <a class="underline" href="/admin/">/admin</a>.
+    </p>
+    {% endif %}
+  </section>
+</section>
+{% endblock %}

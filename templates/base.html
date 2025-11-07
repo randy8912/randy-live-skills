@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Randy Live Skills — portfolio & live development showcase." />
+  <meta property="og:title" content="Randy Live Skills" />
+  <meta property="og:description" content="Portfolio & live development showcase." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <title>{% block title %}Randy Live Skills{% endblock %}</title>
+  {% block head %}{% endblock %}
+
+  <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon" />
+  <link rel="icon" href="{% static 'favicon.png' %}" type="image/png" sizes="64x64" />
+  <link rel="stylesheet" href="{% static 'tw.css' %}" />
+</head>
+
+<body class="min-h-dvh bg-neutral-50 text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white">
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 rounded-lg bg-neutral-900 px-3 py-2 text-white">
+    Overslaan naar hoofdinhoud
+  </a>
+
+  <header class="border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 reveal">
+    <div class="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between">
+      <a href="/" class="text-base font-semibold">Randy Live Skills</a>
+      <nav class="text-sm text-neutral-600 flex gap-6">
+        <a href="/" class="hover:text-neutral-900 transition">Home</a>
+        <a href="/projects/" class="hover:text-neutral-900 transition">Projecten</a>
+        <a href="{% url 'about' %}" class="hover:underline">About</a>
+        <a href="{% url 'contact' %}" class="hover:text-neutral-900 transition">Contact</a>
+        <!-- <a href="/admin/" class="hover:text-neutral-900 transition">Admin</a> -->
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="mx-auto max-w-5xl px-4 py-8 reveal">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="mt-12 border-t bg-white reveal">
+    <div class="mx-auto max-w-5xl px-4 py-6 text-sm text-neutral-600">
+      © <span>{{ now|date:"Y" }}</span> Randy Saija — Alle rechten
+      voorbehouden.
+    </div>
+  </footer>
+
+  <!-- Spotlight overlay for cursor effect -->
+  <div class="spotlight" data-spotlight></div>
+
+  {% block scripts %}
+  <script src="{% static 'js/ui.js' %}"></script>
+  {% endblock %}
+</body>
+
+</html>
